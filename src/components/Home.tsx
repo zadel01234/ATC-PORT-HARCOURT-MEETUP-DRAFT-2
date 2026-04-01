@@ -126,7 +126,7 @@ export default function Home() {
       </section>
 
       {/* Target Audience */}
-      <section className="py-24 bg-on-surface text-on-primary px-6 overflow-hidden relative">
+      <section className="py-24 bg-[#000] text-on-primarys px-6 overflow-hidden relative">
         <div className="max-w-7xl mx-auto relative z-10">
           <h2 className="text-4xl md:text-6xl font-black mb-16 editorial-text">Who is this Meetup<br /><span className="text-primary-container">designed for?</span></h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">

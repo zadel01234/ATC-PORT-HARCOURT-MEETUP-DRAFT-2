@@ -25,7 +25,7 @@ export default function Tickets() {
               className="rounded-2xl shadow-2xl overflow-hidden"
             >
               <img 
-                src="https://picsum.photos/seed/tech-ticket/800/600" 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAblhsz2QnAZARQuTOXIXGR-d6WCy_UnSYmwwkdz3PqcvQ5YRcn7w43uKyB5iltJjX5YL97zk_xK7BEQalOZudZ0Ij5xMWSAcINHx6b1vkWaJXtiCX4s_Da8yhuw3u0k838JGHsSEWf5KJj0D9awd6Iz1bjaJgtoR-S9OM7r2qFhbR3upi9zOddzsqICUeqHiT4IxkQYlF5u7HPYJ5CYTIskvsTnornasavDOSM8tIjZxAVbM07rFqgPLRTatIE-EOCfqRVIoAT7kse" 
                 alt="Tech conference stage" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -63,7 +63,7 @@ export default function Tickets() {
                 "Swags & Refreshment"
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-4 text-on-surface-variant">
-                  <CheckCircle className="text-primary" size={24} fill="currentColor" />
+                  <CheckCircle className="text-primary" size={24} />
                   <span className="font-medium text-lg">{item}</span>
                 </li>
               ))}
