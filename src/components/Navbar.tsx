@@ -1,88 +1,121 @@
 import { motion, AnimatePresence } from "motion/react";
 import { Menu, X, Ticket } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
-interface NavbarProps {
-  currentScreen: string;
-  setScreen: (screen: string) => void;
-}
-
-export default function Navbar({ currentScreen, setScreen }: NavbarProps) {
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
 
   const navLinks = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "involve", label: "Involve" },
-    { id: "gallery", label: "Gallery" },
+    { to: "/", label: "Home" },
+    { to: "/about", label: "About" },
+    { to: "/involve", label: "Involve" },
+    { to: "/gallery", label: "Gallery" },
   ];
 
-  return (
-    <header className="fixed top-0 w-full z-50 glass-effect ambient-shadow">
-      <nav className="flex justify-between items-center px-6 h-16 w-full max-w-7xl mx-auto">
-        <div className="flex items-center gap-3">
-          <button 
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-primary hover:opacity-80 transition-opacity"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-          <span 
-            onClick={() => setScreen("home")}
-            className="text-xl font-black text-primary font-headline tracking-tight cursor-pointer"
-          >
-            ATC Africa
-          </span>
-        </div>
+  const isActive = (to: string) =>
+    to === "/" ? location.pathname === "/" : location.pathname.startsWith(to);
 
+  return (
+    <header
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
+          ? "bg-surface/80 backdrop-blur-xl shadow-sm"
+          : "bg-surface/60 backdrop-blur-md"
+        }`}
+    >
+      <nav className="flex justify-between items-center px-4 sm:px-6 h-16 w-full max-w-7xl mx-auto">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2 shrink-0">
+          <img
+            src="/ATC logo Black.png"
+            alt="ATC Africa Logo"
+            className="h-8 w-auto object-contain"
+          />
+        </Link>
+
+        {/* Desktop Nav */}
         <div className="hidden md:flex gap-8 items-center">
           {navLinks.map((link) => (
-            <button
-              key={link.id}
-              onClick={() => setScreen(link.id)}
-              className={`font-headline font-bold transition-all hover:opacity-80 ${
-                currentScreen === link.id 
-                  ? "text-primary border-b-2 border-primary" 
-                  : "text-on-surface"
-              }`}
+            <Link
+              key={link.to}
+              to={link.to}
+              className={`font-headline font-bold transition-all hover:text-primary relative pb-1 ${isActive(link.to) ? "text-primary" : "text-on-surface"
+                }`}
             >
               {link.label}
-            </button>
+              {isActive(link.to) && (
+                <motion.span
+                  layoutId="nav-underline"
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full"
+                />
+              )}
+            </Link>
           ))}
         </div>
 
-        <button 
-          onClick={() => setScreen("tickets")}
-          className="signature-gradient text-on-primary px-6 py-2 rounded-full font-bold shadow-lg active:scale-95 duration-200 transition-all flex items-center gap-2"
-        >
-          <Ticket size={18} />
-          <span className="hidden sm:inline">Get Ticket</span>
-        </button>
+        {/* Desktop: Get Ticket | Mobile: Hamburger only */}
+        <div className="flex items-center gap-3">
+          <Link
+            to="/tickets"
+            className="hidden md:flex items-center gap-2 signature-gradient text-on-primary px-5 py-2 rounded-full font-bold shadow-lg active:scale-95 duration-200 transition-all text-sm"
+          >
+            <Ticket size={16} />
+            Get Ticket
+          </Link>
+
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden text-primary hover:opacity-80 transition-opacity p-1"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden absolute top-16 left-0 w-full bg-surface border-b border-outline-variant/10 p-6 flex flex-col gap-6 shadow-xl"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="md:hidden overflow-hidden bg-surface border-b border-outline-variant/10 shadow-xl"
           >
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => {
-                  setScreen(link.id);
-                  setIsOpen(false);
-                }}
-                className={`text-left font-headline font-bold text-lg ${
-                  currentScreen === link.id ? "text-primary" : "text-on-surface"
-                }`}
+            <div className="flex flex-col px-6 py-4 gap-2">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className={`font-headline font-bold text-lg py-3 border-b border-outline-variant/10 last:border-0 ${isActive(link.to) ? "text-primary" : "text-on-surface"
+                    }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+
+              {/* Get Ticket inside mobile menu */}
+              <Link
+                to="/tickets"
+                className="mt-3 w-full signature-gradient text-on-primary py-4 rounded-full font-bold text-base shadow-lg active:scale-95 transition-all flex items-center justify-center gap-2"
               >
-                {link.label}
-              </button>
-            ))}
+                <Ticket size={18} />
+                Get Ticket
+              </Link>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

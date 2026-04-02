@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "motion/react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
@@ -8,49 +9,46 @@ import Involve from "./components/Involve";
 import Gallery from "./components/Gallery";
 import Tickets from "./components/Tickets";
 
-export default function App() {
-  const [currentScreen, setCurrentScreen] = useState("home");
-
-  // Scroll to top on screen change
+function ScrollToTop() {
+  const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [currentScreen]);
+  }, [pathname]);
+  return null;
+}
 
-  const renderScreen = () => {
-    switch (currentScreen) {
-      case "home":
-        return <Home />;
-      case "about":
-        return <About />;
-      case "involve":
-        return <Involve />;
-      case "gallery":
-        return <Gallery />;
-      case "tickets":
-        return <Tickets />;
-      default:
-        return <Home />;
-    }
-  };
+function AnimatedRoutes() {
+  const location = useLocation();
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={location.pathname}
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -12 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      >
+        <Routes location={location}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/involve" element={<Involve />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/tickets" element={<Tickets />} />
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
 
+export default function App() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar currentScreen={currentScreen} setScreen={setCurrentScreen} />
-      
+      <ScrollToTop />
+      <Navbar />
       <main className="grow">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentScreen}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          >
-            {renderScreen()}
-          </motion.div>
-        </AnimatePresence>
+        <AnimatedRoutes />
       </main>
-
       <Footer />
     </div>
   );

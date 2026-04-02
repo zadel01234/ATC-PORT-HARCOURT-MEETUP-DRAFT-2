@@ -1,93 +1,91 @@
-import { Globe, Share2, Mail, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Globe, Mail, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="bg-surface-container-low dark:bg-slate-950 w-full mt-20">
-      <div className="flex flex-col gap-8 px-8 py-12 max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-          <div>
-            <span className="font-headline font-bold text-2xl text-primary">ATC Africa</span>
-            <p className="text-on-surface-variant font-sans text-sm leading-relaxed mt-4 max-w-sm">
+    <footer className="bg-surface-container-low w-full mt-20">
+      <div className="flex flex-col gap-8 px-6 sm:px-8 py-12 max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-10 md:gap-8">
+          {/* Logo + tagline */}
+          <div className="shrink-0">
+            <Link to="/" className="inline-block">
+              <img
+                src="/ATC logo Black.png"
+                alt="ATC Africa"
+                className="h-10 w-auto object-contain mb-3"
+              />
+            </Link>
+            <p className="text-on-surface-variant text-sm leading-relaxed max-w-xs">
               © 2024 ATC Africa. Curating the future of Port Harcourt tech.
             </p>
           </div>
-          <div className="flex flex-wrap gap-6">
-              <a className="text-on-surface hover:text-primary transition-colors font-sans text-sm" href="http://atcafrica.com">Join Community</a>
-            <a className="text-on-surface hover:text-primary transition-colors font-sans text-sm" href="#">Sponsorship</a>
-            <a className="text-on-surface hover:text-primary transition-colors font-sans text-sm" href="#">Privacy Policy</a>
-          </div>
-          <div className="flex flex-col gap-2 md:mt-8">
-            <p className="text-on-surface-variant font-sans text-sm">
-              Contact Us
-            </p>
+
+          {/* Links */}
+          <div className="flex flex-wrap gap-x-8 gap-y-3">
             <a
-              className="text-on-surface hover:text-primary transition-colors font-sans text-sm"
+              className="text-on-surface hover:text-primary transition-colors text-sm"
+              href="http://atcafrica.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Join Community
+            </a>
+            <a
+              className="text-on-surface hover:text-primary transition-colors text-sm"
+              href="http://meetup.atcafrica.com/becomeasponsor"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Sponsorship
+            </a>
+            <Link
+              to="/tickets"
+              className="text-on-surface hover:text-primary transition-colors text-sm"
+            >
+              Get Tickets
+            </Link>
+          </div>
+
+          {/* Contact */}
+          <div className="flex flex-col gap-1">
+            <p className="text-on-surface-variant text-sm font-semibold mb-1">Contact Us</p>
+            <a
+              className="text-on-surface hover:text-primary transition-colors text-sm"
               href="mailto:hello@atcafrica.com"
             >
               hello@atcafrica.com
             </a>
             <a
-              className="text-on-surface hover:text-primary transition-colors font-sans text-sm"
+              className="text-on-surface hover:text-primary transition-colors text-sm"
               href="https://atcafrica.com"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               atcafrica.com
             </a>
           </div>
         </div>
-        {/* <div className="flex gap-4">
-          <span className="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center cursor-pointer hover:bg-primary/10 transition-colors">
-            <Globe className="text-primary" size={20} />
-          </span>
-          <span className="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center cursor-pointer hover:bg-primary/10 transition-colors">
-            <Share2 className="text-primary" size={20} />
-          </span>
-          <span className="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center cursor-pointer hover:bg-primary/10 transition-colors">
-            <Mail className="text-primary" size={20} />
-          </span>
-        </div> */}
-        <div className="flex gap-4">
-          <a
-            href="https://x.com/atcafricahq"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center cursor-pointer hover:bg-primary/10 transition-colors"
-          >
-            <Twitter className="text-primary" size={20} />
-          </a>
 
-          <a
-            href="https://www.instagram.com/atcafricahq/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center cursor-pointer hover:bg-primary/10 transition-colors"
-          >
-            <Instagram className="text-primary" size={20} />
-          </a>
-
-          <a
-            href="https://www.linkedin.com/company/atcafricahq/?viewAsMember=true"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center cursor-pointer hover:bg-primary/10 transition-colors"
-          >
-            <Linkedin className="text-primary" size={20} />
-          </a>
-
-          <a
-            href="https://atcafrica.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center cursor-pointer hover:bg-primary/10 transition-colors"
-          >
-            <Globe className="text-primary" size={20} />
-          </a>
-
-          <a
-            href="mailto:hello@atcafrica.com"
-            className="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center cursor-pointer hover:bg-primary/10 transition-colors"
-          >
-            <Mail className="text-primary" size={20} />
-          </a>
+        {/* Social Icons */}
+        <div className="flex gap-3 flex-wrap">
+          {[
+            { href: "https://x.com/atcafricahq", icon: <Twitter size={18} />, label: "Twitter" },
+            { href: "https://www.instagram.com/atcafricahq/", icon: <Instagram size={18} />, label: "Instagram" },
+            { href: "https://www.linkedin.com/company/atcafricahq/", icon: <Linkedin size={18} />, label: "LinkedIn" },
+            { href: "https://atcafrica.com", icon: <Globe size={18} />, label: "Website" },
+            { href: "mailto:hello@atcafrica.com", icon: <Mail size={18} />, label: "Email" },
+          ].map(({ href, icon, label }) => (
+            <a
+              key={label}
+              href={href}
+              target={href.startsWith("mailto") ? undefined : "_blank"}
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary/10 transition-colors text-primary"
+            >
+              {icon}
+            </a>
+          ))}
         </div>
       </div>
     </footer>
