@@ -20,6 +20,7 @@ export default function Navbar() {
 
   const navLinks = [
     { to: "/", label: "Home" },
+    { to: "/speakers", label: "Speakers" },
     { to: "/about", label: "About" },
     { to: "/involve", label: "Involve" },
     { to: "/gallery", label: "Gallery" },

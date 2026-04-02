@@ -8,6 +8,7 @@ import About from "./components/About";
 import Involve from "./components/Involve";
 import Gallery from "./components/Gallery";
 import Tickets from "./components/Tickets";
+import Speakers from "./components/Speakers";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -34,6 +35,7 @@ function AnimatedRoutes() {
           <Route path="/involve" element={<Involve />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/tickets" element={<Tickets />} />
+          <Route path="/speakers" element={<Speakers />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </motion.div>

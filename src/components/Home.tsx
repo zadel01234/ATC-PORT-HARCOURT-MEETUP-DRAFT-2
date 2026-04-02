@@ -8,6 +8,8 @@ const carouselImages = [
   { src: "/DSC_1156.jpg", alt: "ATC community gathering" },
   { src: "/DSC_1159.jpg", alt: "Tech enthusiasts at ATC" },
   { src: "/I89A0001.jpg", alt: "ATC Port Harcourt meetup" },
+  { src: "/I89A0133 (1).jpg", alt: "ATC Port Harcourt meetup" },
+  { src: "/IMG_5646 copy.jpg", alt: "ATC Port Harcourt meetup" },
 ];
 
 // Preload all images immediately
@@ -210,7 +212,11 @@ export default function Home() {
               { id: "01", title: "Developers", desc: "From junior to senior level engineers." },
               { id: "02", title: "Designers", desc: "UI/UX, Product, and Visual designers." },
               { id: "03", title: "Founders", desc: "Entrepreneurs building local solutions." },
-              { id: "04", title: "Enthusiasts", desc: "Anyone curious about the tech space." },
+              { id: "04", title: "Community Manager", desc: "People who rally, organize, and grow the human side of tech." },
+              { id: "05", title: "Project Manager", desc: "Those who turn ideas into timelines and teams into outcomes." },
+              { id: "06", title: "Product Managers", desc: "Builders who sit at the intersection of users, business, and tech." },
+              { id: "07", title: "Engineers", desc: "The hands that actually ship — from backend to the browser." },
+              { id: "08", title: "Enthusiasts", desc: "Anyone curious about the tech space." },
             ].map((item) => (
               <motion.div
                 key={item.id}

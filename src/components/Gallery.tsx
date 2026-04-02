@@ -78,13 +78,12 @@ export default function Gallery() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: i * 0.08 }}
               viewport={{ once: true }}
-              className={`${event.cols} group relative overflow-hidden rounded-2xl sm:rounded-3xl ${
-                event.type === "stats"
-                  ? "bg-primary p-6 sm:p-8 flex flex-col justify-between text-on-primary min-h-[200px]"
+              className={`${event.cols} group relative overflow-hidden rounded-2xl sm:rounded-3xl ${event.type === "stats"
+                  ? "bg-primary p-6 sm:p-8 flex flex-col justify-between text-on-primary min-h-[280px]"
                   : event.type === "cta"
-                  ? "bg-surface-container p-6 sm:p-8 flex flex-col items-center justify-center text-center border-2 border-dashed border-outline-variant/30 min-h-[200px]"
-                  : "bg-surface-container-lowest ambient-shadow"
-              }`}
+                    ? "bg-surface-container p-6 sm:p-8 flex flex-col items-center justify-center text-center border-2 border-dashed border-outline-variant/30 min-h-[280px]"
+                    : "bg-surface-container-lowest ambient-shadow min-h-[280px]"
+                }`}
             >
               {event.type === "stats" ? (
                 <>
@@ -115,20 +114,25 @@ export default function Gallery() {
                 </>
               ) : (
                 <>
-                  <div className="aspect-[16/10] overflow-hidden">
-                    <img
-                      src={event.img}
-                      alt={event.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                  </div>
-                  <div className="absolute top-4 sm:top-6 left-4 sm:left-6">
+                  {/* Image fills the entire card absolutely */}
+                  <img
+                    src={event.img}
+                    alt={event.title}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+
+                  {/* Label badge */}
+                  <div className="absolute top-4 sm:top-6 left-4 sm:left-6 z-10">
                     <span className="px-3 sm:px-4 py-1 sm:py-2 bg-primary/90 text-white rounded-full font-headline font-bold text-xs sm:text-sm tracking-widest uppercase">
                       {event.label}
                     </span>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-0 left-0 p-6 sm:p-8 text-white translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+
+                  {/* Hover text */}
+                  <div className="absolute bottom-0 left-0 p-6 sm:p-8 text-white translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
                     <h3 className="text-xl sm:text-2xl font-headline font-bold">{event.title}</h3>
                     <p className="text-white/80 mt-1 text-sm sm:text-base">{event.location}</p>
                   </div>

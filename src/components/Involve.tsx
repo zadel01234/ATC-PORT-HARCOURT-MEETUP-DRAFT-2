@@ -32,7 +32,7 @@ export default function Involve() {
     <div className="pt-24 sm:pt-32 pb-20 px-4 sm:px-6 max-w-7xl mx-auto space-y-14 sm:space-y-16">
       <div className="text-center max-w-2xl mx-auto space-y-3 sm:space-y-4">
         <h2 className="font-headline text-3xl sm:text-4xl md:text-5xl font-black text-on-surface">
-          Become a Part of the Vision
+          Become a Part of the <span className="text-primary">Vision</span>
         </h2>
         <p className="text-on-surface-variant text-sm sm:text-base">
           There are multiple ways to fuel the flame of innovation. Choose the path that aligns with your capacity to impact.
