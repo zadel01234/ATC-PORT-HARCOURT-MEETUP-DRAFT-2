@@ -59,11 +59,11 @@ export default function Gallery() {
               Look back at where we've been.
             </h1>
             <p className="text-base sm:text-xl text-on-surface-variant max-w-xl leading-relaxed">
-              Capturing the spirit of innovation across Nigerian tech hubs. From Lagos to Abuja, we curate moments that spark change.
+              Capturing the spirit of innovation across Nigerian tech hubs. From Lagos to Abuja to Ibadan, we curate moments that spark change.
             </p>
           </div>
           <div className="absolute top-0 right-0 w-1/3 h-full hidden lg:block opacity-20 pointer-events-none">
-            <div className="w-full h-full bg-gradient-to-bl from-primary to-transparent" />
+            <div className="w-full h-full bg-linear-to-bl from-primary to-transparent" />
           </div>
         </motion.div>
       </section>

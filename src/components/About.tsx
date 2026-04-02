@@ -89,7 +89,7 @@ export default function About() {
           </p>
           <div className="flex flex-wrap gap-2">
             {["Community", "Change", "Tech"].map((tag) => (
-              <span key={tag} className="bg-surface-container-low text-primary px-4 py-1 rounded-full text-xs font-semibold">
+              <span key={tag} className="bg-surface-container-low text-primary px-4 py-1 rounded-full text-xs md:text-sm font-semibold">
                 {tag}
               </span>
             ))}
@@ -117,7 +117,7 @@ export default function About() {
           </p>
           <div className="flex flex-wrap gap-2">
             {["Build", "Infrastructure", "Community"].map((tag) => (
-              <span key={tag} className="bg-surface-container-low text-primary px-4 py-1 rounded-full text-xs font-semibold">
+              <span key={tag} className="bg-surface-container-low text-primary px-4 py-1 rounded-full text-xs md:text-sm font-semibold">
                 {tag}
               </span>
             ))}
