@@ -68,7 +68,7 @@ export default function Tickets() {
                 </li>
               ))}
             </ul>
-            <button className="w-full signature-gradient text-on-primary py-5 rounded-full font-bold text-lg active:scale-95 duration-200 shadow-xl transition-shadow hover:shadow-primary/20">
+            <button className="w-full signature-gradient text-on-primary py-5 rounded-full font-bold text-lg active:scale-95 duration-200 shadow-xl transition-shadow hover:shadow-primary/20" href="https://flutterwave.com/pay/meetup">
               Register Now
             </button>
           </div>

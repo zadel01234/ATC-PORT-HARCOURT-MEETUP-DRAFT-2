@@ -37,7 +37,7 @@ export default function App() {
     <div className="min-h-screen flex flex-col">
       <Navbar currentScreen={currentScreen} setScreen={setCurrentScreen} />
       
-      <main className="flex-grow">
+      <main className="grow">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentScreen}

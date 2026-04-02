@@ -40,7 +40,8 @@ export default function Gallery() {
       title: "Hungry for more?",
       desc: "Explore our full archive of past events and speaker sessions.",
       cols: "md:col-span-4",
-      type: "cta"
+      type: "cta",
+      link: "https://atcafrica.com/gallery"
     }
   ];
 
@@ -97,11 +98,11 @@ export default function Gallery() {
               ) : event.type === "cta" ? (
                 <>
                   <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <ArrowRight className="text-primary" size={32} />
+                      <ArrowRight className="text-primary" size={32} href={event.link} />
                   </div>
                   <h3 className="text-2xl font-headline font-extrabold text-on-surface mb-4">{event.title}</h3>
                   <p className="text-on-surface-variant mb-8 text-sm">{event.desc}</p>
-                  <button className="w-full py-4 bg-primary text-on-primary rounded-full font-headline font-bold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+                  <button className="w-full py-4 bg-primary text-on-primary rounded-full font-headline font-bold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20" href={event.link}>
                     View More
                   </button>
                 </>
