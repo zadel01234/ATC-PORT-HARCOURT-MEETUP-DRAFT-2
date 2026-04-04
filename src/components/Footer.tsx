@@ -15,13 +15,13 @@ export default function Footer() {
                 className="h-10 w-auto object-contain mb-3"
               />
             </Link>
-            <p className="text-on-surface-variant text-sm leading-relaxed max-w-xs">
-              © 2024 ATC Africa. Curating the future of Port Harcourt tech.
+            <p className="text-on-surface-variant text-sm leading-relaxed max-w-sm">
+              © 2026 ATC Africa. - A powerhouse of change makers who are shaping the future of technology ecosystem in Africa.
             </p>
           </div>
 
           {/* Links */}
-          <div className="flex flex-wrap gap-x-8 gap-y-3">
+          <div className="flex flex-col gap-x-8 gap-y-8">
             <a
               className="text-on-surface hover:text-primary transition-colors text-sm"
               href="http://atcafrica.com"

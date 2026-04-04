@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "motion/react";
-import { Calendar, Mic, MessagesSquare, Brain, Users } from "lucide-react";
+import { Calendar, Mic, ArrowRight, MessagesSquare, Brain, Users } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -99,10 +99,10 @@ export default function Home() {
                 Register Now
               </a>
               <button
-                onClick={() => navigate("/about")}
+                onClick={() => navigate("/gallery")}
                 className="border border-outline-variant/30 px-8 sm:px-10 py-4 sm:py-5 rounded-full text-base sm:text-lg font-bold hover:bg-surface-container transition-colors"
               >
-                View Agenda
+                View Gallery
               </button>
             </div>
           </motion.div>
@@ -119,7 +119,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Intro Section */}
+      {/* Intro Section
       <section className="bg-surface-container-low py-20 sm:py-24 px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -135,6 +135,41 @@ export default function Home() {
             <span className="text-primary">digital sanctuary</span> for creators, thinkers, and builders in the garden city to level up their craft."
           </p>
         </motion.div>
+      </section> */}
+
+
+      {/* Target Audience */}
+      <section className="py-20 sm:py-24 bg-[#000] text-white px-4 sm:px-6 overflow-hidden relative">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-black mb-12 sm:mb-16 editorial-text">
+            Who is this Meetup
+            <br />
+            <span className="text-primary-container">designed for?</span>
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
+            {[
+              { id: "01", title: "Developers", desc: "From junior to senior level engineers." },
+              { id: "02", title: "Designers", desc: "UI/UX, Product, and Visual designers." },
+              { id: "03", title: "Founders", desc: "Entrepreneurs building local solutions." },
+              { id: "04", title: "Community Manager", desc: "People who rally, organize, and grow the human side of tech." },
+              { id: "05", title: "Project Manager", desc: "Those who turn ideas into timelines and teams into outcomes." },
+              { id: "06", title: "Product Managers", desc: "Builders who sit at the intersection of users, business, and tech." },
+              { id: "07", title: "Engineers", desc: "The hands that actually ship — from backend to the browser." },
+              { id: "08", title: "Enthusiasts", desc: "Anyone curious about the tech space." },
+            ].map((item) => (
+              <motion.div
+                key={item.id}
+                whileHover={{ scale: 1.04 }}
+                className="p-4 sm:p-6 border-l-2 border-primary-container/30 bg-white/5 backdrop-blur-sm rounded-r-xl"
+              >
+                <span className="text-primary-container font-black text-xl sm:text-2xl block mb-2">{item.id}</span>
+                <h4 className="text-base sm:text-xl font-bold">{item.title}</h4>
+                <p className="text-on-surface-variant text-xs sm:text-sm mt-2">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2 pointer-events-none" />
       </section>
 
       {/* Event Highlights */}
@@ -199,66 +234,61 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Target Audience */}
-      <section className="py-20 sm:py-24 bg-[#000] text-white px-4 sm:px-6 overflow-hidden relative">
-        <div className="max-w-7xl mx-auto relative z-10">
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-black mb-12 sm:mb-16 editorial-text">
-            Who is this Meetup
-            <br />
-            <span className="text-primary-container">designed for?</span>
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
-            {[
-              { id: "01", title: "Developers", desc: "From junior to senior level engineers." },
-              { id: "02", title: "Designers", desc: "UI/UX, Product, and Visual designers." },
-              { id: "03", title: "Founders", desc: "Entrepreneurs building local solutions." },
-              { id: "04", title: "Community Manager", desc: "People who rally, organize, and grow the human side of tech." },
-              { id: "05", title: "Project Manager", desc: "Those who turn ideas into timelines and teams into outcomes." },
-              { id: "06", title: "Product Managers", desc: "Builders who sit at the intersection of users, business, and tech." },
-              { id: "07", title: "Engineers", desc: "The hands that actually ship — from backend to the browser." },
-              { id: "08", title: "Enthusiasts", desc: "Anyone curious about the tech space." },
-            ].map((item) => (
-              <motion.div
-                key={item.id}
-                whileHover={{ scale: 1.04 }}
-                className="p-4 sm:p-6 border-l-2 border-primary-container/30 bg-white/5 backdrop-blur-sm rounded-r-xl"
-              >
-                <span className="text-primary-container font-black text-xl sm:text-2xl block mb-2">{item.id}</span>
-                <h4 className="text-base sm:text-xl font-bold">{item.title}</h4>
-                <p className="text-on-surface-variant text-xs sm:text-sm mt-2">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-      </section>
+      
 
       {/* Partners Section */}
-      <section className="py-20 sm:py-24 px-4 sm:px-6 bg-surface">
+      <section className="py-20 sm:py-24 px-4 sm:px-6 bg-[#0d0d0d]">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-10 md:gap-12">
-            <div className="md:w-1/3">
-              <h2 className="text-2xl sm:text-3xl font-bold text-on-surface">Community & Strategic Partners</h2>
-              <p className="text-on-surface-variant mt-3 sm:mt-4 text-sm sm:text-base">
-                Working together to build a robust ecosystem in the south-south.
-              </p>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12 sm:mb-16">
+            <div className="max-w-lg">
+              <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-white/35 mb-4">
+                <span className="w-5 h-px bg-white/30 inline-block" />
+                Partners
+              </span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white editorial-text leading-tight">
+                Community &<br />Strategic Partners
+              </h2>
             </div>
-            <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-12 items-center">
-              {["GDG Port Harcourt", "Friends of Figma PH", "Pyale WorkHub"].map((partner, i) => (
-                <motion.div
-                  key={i}
-                  whileHover={{ scale: 1.05 }}
-                  className="flex flex-col items-center group"
-                >
-                  <div className="w-full h-20 sm:h-24 bg-surface-container rounded-2xl flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-300">
-                    <span className="font-bold text-on-surface-variant text-center px-4 text-sm sm:text-base">
-                      {partner}
-                    </span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+            <p className="text-sm sm:text-base text-white/40 max-w-xs leading-relaxed md:text-right">
+              Working together to build a robust ecosystem in the south-south.
+            </p>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="rounded-2xl sm:rounded-3xl border border-white/8 bg-white/[0.03] overflow-hidden"
+          >
+            <div className="flex flex-col items-center justify-center md:flex-row md:items-stretch min-h-[280px]">
+
+              {/* Left column: placeholder logo grid
+              <div className="md:w-1/2 border-b md:border-b-0 md:border-r border-white/8 p-10 sm:p-14 flex items-center justify-center">
+                <div className="grid grid-cols-3 gap-3 w-full max-w-xs">
+                  {[...Array(6)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="aspect-square rounded-xl border border-white/10 bg-white/5 flex items-center justify-center"
+                      style={{ opacity: 0.3 + (i % 3) * 0.2 }}
+                    >
+                      <div className="w-1/3 h-1/3 rounded-sm bg-white/20" />
+                    </div>
+                  ))}
+                </div>
+              </div> */}
+
+              {/* Right column: coming soon — fully centered */}
+              <div className="md:w-1/2 p-10 sm:p-14 flex items-center justify-center">
+                <p className="text-2xl sm:text-3xl md:text-5xl font-black text-white leading-snug text-center">
+                  <span className="text-primary-container">Coming Soon</span>
+                </p>
+              </div>
+
+            </div>
+          </motion.div>
+
         </div>
       </section>
 

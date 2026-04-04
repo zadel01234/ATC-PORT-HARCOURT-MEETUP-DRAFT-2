@@ -1,11 +1,12 @@
 import { motion } from "motion/react";
 
+
 const tracks = [
   {
     title: "Become a Sponsor",
-    desc: "Align your brand with Africa's fastest-growing tech hub. Gain exclusive access to top-tier talent and innovation leaders.",
+    desc: "Align your brand with Africa's fastest-growing tech Community. Gain exclusive access to top-tier talent and innovation leaders.",
     img: "/DSC_1156.jpg",
-    btn: "Download Pitch Deck",
+    btn: "Apply to Sponsor",
     link: "http://meetup.atcafrica.com/becomeasponsor",
     featured: false,
   },
@@ -18,11 +19,11 @@ const tracks = [
     featured: true,
   },
   {
-    title: "Community Partner",
-    desc: "For tech hubs, NGOs, and student groups looking to collaborate on high-impact initiatives across the continent.",
+    title: "Let's Collaborate",
+    desc: "Partner with ATC Africa for Portharcourt Meetup",
     img: "/I89A0001.jpg",
     btn: "Let's Collaborate",
-    link: "https://docs.google.com/forms",
+    link: "https://wa.me/2349079021044?text=Hello%20ATC%20Africa,%20I%20want%20to%20collaborate",
     featured: false,
   },
 ];
@@ -76,6 +77,17 @@ export default function Involve() {
             </div>
           </motion.div>
         ))}
+      </div>
+
+      <div className="flex flex-row items-center justify-center ">
+        <a
+          href="https://drive.google.com/file/d/1WUCErMyao1Xxw9YfajUbqLKam91RfLvB/view?usp=drive_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-primary text-on-primary px-8 sm:px-12 py-4 sm:py-6 rounded-full text-lg sm:text-xl font-black shadow-xl hover:scale-105 active:scale-95 transition-all"
+        >
+          Download Event Proposal
+        </a>
       </div>
     </div>
   );
